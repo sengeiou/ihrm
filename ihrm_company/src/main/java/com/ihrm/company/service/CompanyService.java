@@ -1,9 +1,10 @@
 package com.ihrm.company.service;
 
-import com.ihrm.common.entity.MyPage;
 import com.ihrm.common.utils.IdWorker;
+import com.ihrm.company.controller.MyPage;
 import com.ihrm.company.repository.CompanyRepository;
 import com.ihrm.domain.company.Company;
+import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -11,8 +12,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -30,7 +29,7 @@ public class CompanyService {
      * 1.配置idwork到工程
      * 2.在service中注入idwork
      * 3.通过idwork生成id
-     * 4.保存企业111
+     * 4.保存企业
      */
     public void add(Company company) {
         //基本属性设置
@@ -84,7 +83,7 @@ public class CompanyService {
     @Cacheable(value = "findAll")
     public MyPage<Company> findAll(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page-1, size);
-        MyPage<Company> myPage=new MyPage<>(companyRepository.findAll(pageRequest));
+        MyPage<Company> myPage = new MyPage<>(companyRepository.findAll(pageRequest));
         return myPage;
     }
 }

@@ -13,8 +13,8 @@ import java.util.Date;
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
-    @Autowired
-    private CancelOrderSender cancelOrderSender;
+//    @Autowired
+//    private CancelOrderSender cancelOrderSender;
 
     @Transactional
     @Override
@@ -41,6 +41,6 @@ public class OrderServiceImpl implements OrderService {
         //获取订单超时时间，假设为20秒
         long delayTimes = 20 * 1000L;
         //发送延迟消息
-        cancelOrderSender.sendMessage(orderId, delayTimes);
+//        cancelOrderSender.sendMessage(orderId, delayTimes);
     }
 }

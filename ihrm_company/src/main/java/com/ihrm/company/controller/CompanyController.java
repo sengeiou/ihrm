@@ -1,14 +1,21 @@
 package com.ihrm.company.controller;
 
 import com.ihrm.common.entity.CommonResult;
-import com.ihrm.common.entity.MyPage;
 import com.ihrm.company.service.CompanyService;
 import com.ihrm.domain.company.Company;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = "企业管理")
 @CrossOrigin
@@ -64,7 +71,7 @@ public class CompanyController {
     @ApiOperation(value = "查询所有企业")
     @GetMapping(value = "/findAll/{page}/{size}")
     public CommonResult findAll(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
-        MyPage<Company> companyMyPage = companyService.findAll(page, size);
-        return CommonResult.success(companyMyPage);
+        MyPage<Company> companyPage = companyService.findAll(page, size);
+        return CommonResult.success(companyPage);
     }
 }

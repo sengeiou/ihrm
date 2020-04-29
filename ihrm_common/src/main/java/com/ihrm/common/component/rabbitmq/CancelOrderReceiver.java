@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  * 取消订单消息的处理者
  */
-@Component
+//@Component
 @Slf4j
 @RabbitListener(queues = "ihrm.order.cancel") // 监听的消息队列
 public class CancelOrderReceiver {
