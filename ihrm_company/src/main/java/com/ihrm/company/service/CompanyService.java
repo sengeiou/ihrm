@@ -30,7 +30,7 @@ public class CompanyService {
      * 1.配置idwork到工程
      * 2.在service中注入idwork
      * 3.通过idwork生成id
-     * 4.保存企业
+     * 4.保存企业111
      */
     public void add(Company company) {
         //基本属性设置
